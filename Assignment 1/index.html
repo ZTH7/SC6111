@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .swap-card {
+      background: #121314;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container d-flex align-items-center vh-100">
+    <div class="card swap-card rounded-4 mx-auto">
+      <div class="card-body p-4 p-md-5 text-white">
+        <div class="d-flex justify-content-between mb-4">
+          <h4 class="fw-semibold">Swap</h4>
+          <div class="ms-3 d-flex align-items-center">
+            <button id="connectBtn" class="btn btn-outline-light">Connect Wallet</button>
+          </div>
+        </div>
+
+        <!-- Swap From -->
+        <div class="mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <label>Swap from</label>
+          </div>
+          <div class="row g-2">
+            <div class="col-5">
+              <select class="form-select" id="tokenFrom"></select>
+            </div>
+            <div class="col-7">
+              <input type="number" min="0" class="form-control" id="amountFrom" placeholder="0.0" />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <small id="ethBalance" class="mt-1 d-none">Balance: 0 ETH</small>
+          </div>
+        </div>
+
+        <!-- Reverse -->
+        <div class="d-flex justify-content-end">
+          <button id="reverseBtn" class="btn btn-outline-light p-0 align-items-center justify-content-center"
+            style="width: 36px; height: 36px;">↑↓</button>
+        </div>
+
+        <!-- Swap To -->
+        <div class="mb-0">
+          <div class="d-flex justify-content-between align-items-center">
+            <label>Swap to</label>
+          </div>
+          <div class="row g-2">
+            <div class="col-5">
+              <select class="form-select" id="tokenTo"></select>
+            </div>
+            <div class="col-7">
+              <input type="number" class="form-control" id="amountTo" placeholder="0.0" readonly />
+            </div>
+          </div>
+        </div>
+
+        <!-- Rate text -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <small id="rateText"></small>
+        </div>
+
+        <!-- Slippage Tolerance -->
+        <div class="mb-2">
+          <div class="d-flex justify-content-between">
+            <label>Slippage Tolerance</label>
+          </div>
+          <div class="row g-2 align-items-center" id="slippageGroup">
+            <div class="col-auto">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="slippage" id="slip2" value="2" checked>
+                <label class="form-check-label" for="slip2">2%</label>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="slippage" id="slip3" value="3">
+                <label class="form-check-label" for="slip3">3%</label>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="slippage" id="slipCustom" value="custom">
+                <label class="form-check-label" for="slipCustom">Custom</label>
+              </div>
+            </div>
+            <div class="col-auto">
+              <input type="number" class="form-control" id="slipCustomInput" placeholder="0 - 15 %" step="0.1" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="/main.js"></script>
+</body>
+
+</html>
